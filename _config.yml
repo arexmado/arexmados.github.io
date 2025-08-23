@@ -1,0 +1,19 @@
+# 사이트 기본 정보
+title: AREXMADO 공식 페이지
+description: 게임 · 프로그램 개발 · 유튜브 · 커뮤니티
+baseurl: "" # 프로젝트 페이지일 경우 /프로젝트이름, 사용자 페이지는 ""
+url: "https://arexmados.github.io"
+
+# 글, 페이지 기본 설정
+markdown: kramdown
+theme: minima  # Jekyll 기본 테마
+
+# 플러그인 (필요시)
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# 기타 설정
+exclude:
+  - README.md
+  - deploy_pages.bat
