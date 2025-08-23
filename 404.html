@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>페이지를 찾을 수 없어요 · 404</title>
+  <meta name="description" content="요청하신 페이지를 찾을 수 없습니다 (404)." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext x='50' y='62' text-anchor='middle' font-size='60'%3E%F0%9F%93%8D%3C/text%3E%3C/svg%3E">
+  <style>
+    :root{
+      --bg: #0b1020;
+      --panel: #0f1629;
+      --text: #e7eef8;
+      --muted:#a8b3cf;
+      --accent:#6ea8fe;
+      --accent-2:#8f7dff;
+      --danger:#ff6b6b;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius: 18px;
+    }
+    @media (prefers-color-scheme: light){
+      :root{
+        --bg: #f6f8fc;
+        --panel: #ffffff;
+        --text: #121826;
+        --muted:#5b6477;
+        --accent:#2463eb;
+        --accent-2:#7c3aed;
+        --danger:#dc2626;
+        --shadow: 0 10px 30px rgba(17,24,39,.08);
+      }
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Noto Sans KR", Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      background: radial-gradient(1200px 800px at 85% -10%, rgba(110,168,254,.25), transparent 40%),
+                  radial-gradient(900px 700px at -10% 110%, rgba(143,125,255,.18), transparent 40%),
+                  var(--bg);
+      color:var(--text); display:grid; place-items:center; padding:24px;
+    }
+
+    .shell{width:min(920px, 92vw); background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)) border-box;
+      border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow:var(--shadow); position:relative; overflow:hidden}
+
+    .grid{display:grid; grid-template-columns: 1.2fr 1fr; gap:28px; align-items:center}
+    @media (max-width:900px){ .grid{grid-template-columns: 1fr} }
+
+    .art{position:relative; padding:40px}
+    .content{padding:40px}
+
+    h1{font-size: clamp(32px, 5vw, 48px); line-height:1.1; margin:0 0 10px; letter-spacing:-0.02em}
+    p.lead{margin:0 0 18px; color:var(--muted)}
+
+    .chip{display:inline-flex; align-items:center; gap:8px; font-weight:600; font-size:14px; padding:8px 12px; border-radius:999px; background:linear-gradient(135deg, rgba(110,168,254,.18), rgba(143,125,255,.18)); border:1px solid rgba(255,255,255,.16); color:var(--text);}
+
+    .panel{margin-top:18px; background:var(--panel); border-radius:14px; padding:14px; border:1px solid rgba(255,255,255,.08)}
+
+    .row{display:flex; gap:10px; margin-top:10px}
+    .row > *{flex:1}
+
+    .input{width:100%; padding:14px 14px; border-radius:12px; border:1px solid rgba(99,102,241,.25); background:#0d1426; color:#e7eef8; outline:none}
+    @media (prefers-color-scheme: light){ .input{ background:#fff; color:#121826; border-color:#E5E7EB } }
+
+    .btn{appearance:none; border:none; cursor:pointer; padding:12px 14px; border-radius:12px; font-weight:700; transition:transform .06s ease, box-shadow .2s ease; box-shadow: 0 6px 16px rgba(0,0,0,.18)}
+    .btn:active{ transform: translateY(1px) }
+    .btn.primary{ background: linear-gradient(135deg, var(--accent), var(--accent-2)); color:white }
+    .btn.ghost{ background: transparent; color:var(--text); border:1px solid rgba(255,255,255,.18) }
+
+    .links{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:10px}
+    @media (max-width:420px){ .links{grid-template-columns:1fr} }
+
+    .tiny{font-size:12px; color:var(--muted); margin-top:8px}
+    .count{font-variant-numeric: tabular-nums}
+
+    /* Decorative 3D 404 */
+    .scene{width:100%; aspect-ratio: 4/3; display:grid; place-items:center}
+    .badge{position:absolute; top:12px; left:12px}
+
+    .blob{
+      position:absolute; inset:auto -60px -90px auto; width:320px; height:320px; filter: blur(40px); opacity:.55;
+      background: conic-gradient(from 180deg at 50% 50%, rgba(110,168,254,.45), rgba(143,125,255,.45), rgba(110,168,254,.45)); border-radius: 50%;
+      animation: float 8s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-14px) } }
+
+    .card{position:relative; width:min(520px, 90%); aspect-ratio: 16/10; border-radius: 24px; background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0)); border:1px solid rgba(255,255,255,.14); box-shadow: var(--shadow); display:grid; place-items:center; overflow:hidden}
+
+    .digits{font-size: clamp(68px, 10vw, 120px); font-weight:900; letter-spacing:.04em; line-height:1; background: linear-gradient(135deg, var(--text), var(--accent)); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow: 0 10px 30px rgba(0,0,0,.25)}
+
+    .gridlines{position:absolute; inset:0; background-image: linear-gradient(rgba(255,255,255,.07) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.07) 1px, transparent 1px); background-size: 30px 30px; opacity:.3}
+
+    .glow{position:absolute; inset:-40%; background: radial-gradient(520px 360px at 60% 30%, rgba(110,168,254,.28), transparent), radial-gradient(520px 360px at 30% 80%, rgba(143,125,255,.28), transparent)}
+
+    footer{display:flex; justify-content:space-between; align-items:center; gap:10px; margin-top:14px; color:var(--muted); font-size:12px}
+    footer a{color:inherit}
+    code {background: rgba(255,255,255,.06); padding:2px 6px; border-radius: 6px}
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <div class="grid">
+      <section class="art">
+        <div class="badge chip" aria-hidden="true">오류 코드 · 404</div>
+        <div class="scene">
+          <div class="card" role="img" aria-label="404 숫자 아트">
+            <div class="gridlines" aria-hidden="true"></div>
+            <div class="glow" aria-hidden="true"></div>
+            <div class="digits" aria-hidden="true">404</div>
+          </div>
+          <div class="blob" aria-hidden="true"></div>
+        </div>
+      </section>
+      <section class="content">
+        <h1>페이지를 찾을 수 없어요</h1>
+        <p class="lead">주소가 변경되었거나, 삭제되었거나, 잘못된 링크일 수 있어요. 아래에서 해결 방법을 선택해 주세요.</p>
+
+        <div class="panel">
+          <form id="searchForm" role="search" aria-label="사이트 검색">
+            <label for="q" class="tiny">내 사이트에서 검색</label>
+            <div class="row">
+              <input id="q" class="input" name="q" type="search" placeholder="검색어를 입력하세요" autocomplete="off" />
+              <button class="btn primary" type="submit">검색</button>
+            </div>
+            <div class="tiny">DuckDuckGo로 <code>site:내도메인</code> 한정 검색합니다.</div>
+          </form>
+        </div>
+
+        <div class="links">
+          <button class="btn ghost" onclick="goHome()">🏠 홈으로</button>
+          <button class="btn ghost" onclick="goBack()">↩️ 이전 페이지</button>
+          <a class="btn ghost" href="/sitemap.xml">🗺️ 사이트맵</a>
+          <a class="btn ghost" href="mailto:owner@example.com?subject=404%20링크%20오류%20신고">✉️ 문의하기</a>
+        </div>
+
+        <div class="tiny">자동으로 <span class="count" id="count">8</span>초 후 홈으로 이동합니다. 자동 이동을 중지하려면 아래 체크를 끄세요.</div>
+        <label class="tiny" style="display:flex; align-items:center; gap:8px; margin-top:6px">
+          <input type="checkbox" id="autojump" checked /> 자동 이동 사용
+        </label>
+
+        <footer>
+          <span>이 페이지는 GitHub Pages 404 전용입니다.</span>
+          <span><a href="/">루트로 이동</a></span>
+        </footer>
+      </section>
+    </div>
+  </main>
+
+  <script>
+    // DuckDuckGo site: search scoped to current domain
+    const form = document.getElementById('searchForm');
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      const q = document.getElementById('q').value.trim();
+      const domain = location.hostname;
+      const url = 'https://duckduckgo.com/?q=' + encodeURIComponent('site:' + domain + ' ' + q);
+      location.href = url;
+    });
+
+    // Back & Home helpers
+    function goBack(){ if (history.length > 1) history.back(); else location.href = '/'; }
+    function goHome(){ location.href = '/'; }
+
+    // Auto redirect countdown
+    const counter = document.getElementById('count');
+    const auto = document.getElementById('autojump');
+    let seconds = parseInt(counter.textContent, 10);
+    let timer = setInterval(() => {
+      if(!auto.checked) return; // paused by user
+      seconds -= 1;
+      counter.textContent = String(seconds);
+      if(seconds <= 0){
+        clearInterval(timer);
+        goHome();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
